@@ -27,9 +27,9 @@ public class Main {
             // Crear el mensaje de correo
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("ftr1500@gmail.com"));
-            message.setRecipients(
+            message.setRecipient(
                     Message.RecipientType.TO,
-                    InternetAddress.parse("ftr1500@gmail.com")
+                    new InternetAddress("ftr1500@gmail.com")
             );
             message.setSubject("Prueba de SMTP con Java");
             message.setText("¡Hola! Este correo fue enviado desde un programa Java utilizando Jakarta Mail.");
