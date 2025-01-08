@@ -1,10 +1,21 @@
 package org.example;
 import jakarta.mail.*;
 import jakarta.mail.internet.*;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 public class Main {
     public static void main(String[] args) {
+        List<InternetAddress> to=new ArrayList<InternetAddress>();
+        try {
+            to.add(new InternetAddress("feliptorres1@paucasesnovescifp.cat"));
+            to.add(new InternetAddress("ftr1500@gmail.com"));
+        } catch (AddressException e) {
+            throw new RuntimeException(e);
+        }
+
         // Configuración de las propiedades de la conexión SMTP
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com"); // Servidor SMTP (Gmail en este caso)
@@ -27,12 +38,12 @@ public class Main {
             // Crear el mensaje de correo
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("ftr1500@gmail.com"));
-            message.setRecipient(
+            message.setRecipients(
                     Message.RecipientType.TO,
-                    new InternetAddress("ftr1500@gmail.com")
+                    to.toArray(new InternetAddress[0])
             );
             message.setSubject("Prueba de SMTP con Java");
-            message.setText("¡Hola! Este correo fue enviado desde un programa Java utilizando Jakarta Mail.");
+            message.setText("Intento multiple");
 
             // Enviar el mensaje
             Transport.send(message);
