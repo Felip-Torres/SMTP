@@ -8,6 +8,8 @@ import java.util.Properties;
 
 public class Main {
     public static void main(String[] args) {
+
+        //Lista para enviar a multiples emails
         List<InternetAddress> to=new ArrayList<InternetAddress>();
         try {
             to.add(new InternetAddress("feliptorres1@paucasesnovescifp.cat"));
@@ -38,12 +40,20 @@ public class Main {
             // Crear el mensaje de correo
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("ftr1500@gmail.com"));
-            message.setRecipients(
+
+            message.setRecipient(
+                    Message.RecipientType.TO,
+                    new InternetAddress("ftr1500@gmail.com")
+            );
+
+            /*message.setRecipients(
                     Message.RecipientType.TO,
                     to.toArray(new InternetAddress[0])
-            );
+            );*/
+
             message.setSubject("Prueba de SMTP con Java");
             message.setText("Intento multiple");
+
 
             // Enviar el mensaje
             Transport.send(message);
