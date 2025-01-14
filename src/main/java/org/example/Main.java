@@ -43,7 +43,7 @@ public class Main {
 
             message.setRecipient(
                     Message.RecipientType.TO,
-                    new InternetAddress("ftr1500@gmail.com")
+                    new InternetAddress("feliptorres1@paucasesnovescifp.cat")
             );
 
             /*message.setRecipients(
