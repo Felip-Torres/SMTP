@@ -36,6 +36,8 @@ public class Main {
             }
         });
 
+        session.setDebug(true); // Activa el modo debug para ver las respuestas del servidor
+
         try {
             // Crear el mensaje de correo
             Message message = new MimeMessage(session);
